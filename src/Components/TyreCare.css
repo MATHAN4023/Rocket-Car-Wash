@@ -1,0 +1,82 @@
+/* Container styles */
+.carwash-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: black;
+    color: white;
+    padding: 3rem;
+    border-radius: 1rem;
+    gap: 2rem;
+    height: 100vh;
+    border-color: 1px solid red;
+  }
+  
+  @media (min-width: 768px) {
+    .carwash-card {
+      flex-direction: row;
+      padding: 4rem;
+      gap: 3rem;
+    }
+  }
+  
+  /* Text content styles */
+  .carwash-text {
+    flex: 1;
+  }
+  
+  .carwash-title {
+    color: #ff4500;
+    font-size: 1.25rem;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+  
+  .carwash-heading {
+    font-size: 2rem;
+    font-weight: bold;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+  }
+  
+  @media (min-width: 768px) {
+    .carwash-heading {
+      font-size: 2.5rem;
+    }
+  }
+  
+  .carwash-description {
+    font-size: 1.125rem;
+    line-height: 1.5;
+    color: #d3d3d3;
+  }
+  
+  @media (min-width: 768px) {
+    .carwash-description {
+      font-size: 1.5rem;
+    }
+  }
+  
+  /* Image content styles */
+  .carwash-image-container {
+    flex-shrink: 0;
+    width: 100%;
+    max-height: 60vh;
+  }
+  
+  @media (min-width: 768px) {
+    .carwash-image-container {
+      width: 40%;
+      max-height: 50vh;
+    }
+  }
+  
+  .carwash-image {
+    width: 100%;
+    height: auto;
+    border-radius: 1rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    object-fit: cover;
+  }
+  
