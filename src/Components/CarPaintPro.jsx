@@ -33,10 +33,10 @@ const CarPaintPro = () => {
     <div ref={cardRef} className="carwash-card">
       {/* Text Content */}
       <div className="carwash-text">
-        <p className="carwash-title">Our Services ----</p>
-        <h2 className="carwash-heading">Car Paint Protection</h2>
+        <p className="carwash-title">Car Paint Protection 🚀</p>
+        <h2 className="carwash-heading">Safeguard your car’s beauty with our Car Paint Protection service—defense against scratches, UV rays, and wear.</h2>
         <p className="carwash-description">
-        Shield your car’s finish with our Paint Protection service! Enjoy a glossy, scratch-resistant coat that keeps your car looking new and protected from the elements.</p>
+        Using cutting-edge protective coatings, we help maintain your car's vibrant color and finish, reducing fading and damage. Our paint protection shields against everyday hazards, from road debris to harsh sunlight, keeping your vehicle looking brand new. Invest in lasting beauty and protection today!</p>
       </div>
       
       {/* Image Content */}

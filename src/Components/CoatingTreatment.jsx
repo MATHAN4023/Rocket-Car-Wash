@@ -33,10 +33,10 @@ const CoatingTreatment = () => {
     <div ref={cardRef} className="carwash-card">
       {/* Text Content */}
       <div className="carwash-text">
-        <p className="carwash-title">Our Services ----</p>
-        <h2 className="carwash-heading">Coating and Treatment</h2>
+        <p className="carwash-title">Coating and Treatment 🚀</p>
+        <h2 className="carwash-heading">Protect and elevate your vehicle’s appearance with our premium Coating and Treatment services. Defend against the elements in style.</h2>
         <p className="carwash-description">
-        Protect and enhance your car’s finish with our Coating and Treatment service! Get long-lasting shine and protection for a car that looks stunning, rain or shine.</p>
+        Our advanced coating solutions provide a durable shield, enhancing gloss and resisting scratches, UV rays, and weather damage. Ideal for long-lasting shine and protection, each treatment is meticulously applied for maximum effect. Choose our Coating and Treatment to keep your car looking flawless year-round!</p>
       </div>
       
       {/* Image Content */}

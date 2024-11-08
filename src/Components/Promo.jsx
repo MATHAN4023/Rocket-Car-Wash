@@ -122,7 +122,7 @@ const Promo = () => {
       {/* Promo Text Section */}
       <div className="promo__text" ref={textRef}>
           {/* <h1>Your Promo Text Here</h1> */}
-          <p>Rocket Car Wash is transforming car care with a bold, fresh approach, launching your vehicle into a new realm of shine and brilliance. Discover the future of car care with us!</p>
+          <p>Rocket Car Wash delivers fast, innovative car care for a perfect shine every time. Experience top-quality service that brings out the best in your vehicle!</p>
       </div>
 
       

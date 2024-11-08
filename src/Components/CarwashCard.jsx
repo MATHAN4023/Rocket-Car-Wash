@@ -33,10 +33,10 @@ const CarwashCard = () => {
     <div ref={cardRef} className="carwash-card">
       {/* Text Content */}
       <div className="carwash-text">
-        <p className="carwash-title">Our Services ----</p>
-        <h2 className="carwash-heading">Crystal Clear Car Wash</h2>
+        <p className="carwash-title">Crystal Clear Car Wash 🚀</p>
+        <h2 className="carwash-heading">Get your car shining like new! Crystal Clear Car Wash offers premium services to make every ride sparkle.</h2>
         <p className="carwash-description">
-        Get a showroom shine with our Car Wash service! Our expert team uses top-quality products to make your car look brand new—drive in today and see the difference!</p>
+        From spotless exteriors to deep interior cleaning, we handle every detail with care. Using eco-friendly products, our team ensures a shine that lasts, all while protecting your car's finish. Visit us today for a truly crystal-clear wash experience!</p>
       </div>
       
       {/* Image Content */}

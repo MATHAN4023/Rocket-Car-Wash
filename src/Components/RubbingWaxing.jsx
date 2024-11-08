@@ -33,10 +33,10 @@ const RubbingWaxing = () => {
     <div ref={cardRef} className="carwash-card">
       {/* Text Content */}
       <div className="carwash-text">
-        <p className="carwash-title">Our Services ----</p>
-        <h2 className="carwash-heading">Car Rubbing and Waxing</h2>
+        <p className="carwash-title">Car Rubbing and Waxing 🚀</p>
+        <h2 className="carwash-heading">Bring out the brilliance in your car's finish with expert rubbing and waxing services. Restore, protect, and shine!</h2>
         <p className="carwash-description">
-        Restore your car’s shine with our Rubbing and Waxing service! We smooth out scratches and add a lasting gloss for a like-new finish.</p>
+        Our Car Rubbing and Waxing service revitalizes your vehicle’s paint, removing minor scratches and imperfections. With top-grade wax and a professional touch, we ensure a high-gloss, long-lasting finish. Drive away with a showroom shine every time!</p>
       </div>
       
       {/* Image Content */}

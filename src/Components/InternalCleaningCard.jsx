@@ -33,10 +33,10 @@ const InternalCleaningCard = () => {
     <div ref={cardRef} className="carwash-card">
       {/* Text Content */}
       <div className="carwash-text">
-        <p className="carwash-title">Our Services ----</p>
-        <h2 className="carwash-heading">Pristine Interior Care</h2>
+        <p className="carwash-title">Pristine Interior Care 🚀</p>
+        <h2 className="carwash-heading">Experience the ultimate in car interior care with Pristine Interior Care—where freshness and cleanliness meet perfection.</h2>
         <p className="carwash-description">
-        Experience a fresh, spotless interior with Pristine Interior Care! Our team ensures every corner of your car feels like new, giving you comfort and cleanliness in every drive.</p>
+        Specializing in deep-cleaning and restoration, we bring back the comfort and cleanliness of your car’s interior. From seats to carpets, every inch is meticulously treated for a like-new feel. Discover the difference with Pristine Interior Care today!</p>
       </div>
       
       {/* Image Content */}
