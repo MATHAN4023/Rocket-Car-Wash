@@ -24,7 +24,7 @@ const HorizontalScroll = ({ setHorizontalScrollCompleted }) => {
         scrollTrigger: {
           trigger: container,
           start: 'top top',
-          end: `+=${container.scrollWidth}`, 
+          end: `+=${container.scrollWidth}`,
           pin: true,
           scrub: true,
           onUpdate: (self) => {
@@ -47,25 +47,27 @@ const HorizontalScroll = ({ setHorizontalScrollCompleted }) => {
     // Initialize the animation
     let scrollTween = createHorizontalScroll();
 
-    // Refresh animation and ScrollTrigger on window resize
+    // Refresh animation and ScrollTrigger on window resize with a delay
     const resizeHandler = () => {
-      scrollTween.kill();  // Kill existing animation
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());  // Clear all triggers
-      scrollTween = createHorizontalScroll();  // Re-create animation
-      ScrollTrigger.refresh();  // Ensure ScrollTrigger updates
+      setTimeout(() => {
+        scrollTween.kill();
+        ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+        scrollTween = createHorizontalScroll();
+        ScrollTrigger.refresh();
+      }, 100); // Delay allows for complete element resizing
     };
 
     // Attach resize event listener
     window.addEventListener('resize', resizeHandler);
 
-    // Run ScrollTrigger refresh after initial setup
+    // Initial refresh
     ScrollTrigger.refresh();
 
     return () => {
       // Cleanup on component unmount
       scrollTween.kill();
       window.removeEventListener('resize', resizeHandler);
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
   }, [setHorizontalScrollCompleted]);
 
