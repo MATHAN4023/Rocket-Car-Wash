@@ -15,39 +15,57 @@ const HorizontalScroll = ({ setHorizontalScrollCompleted }) => {
 
   useEffect(() => {
     const container = containerRef.current;
-    const scrollTween = gsap.to(container, {
-      x: -(container.scrollWidth - window.innerWidth),
-      ease: 'none',
-      scrollTrigger: {
-        trigger: container,
-        start: 'top top',
-        end: `+=${container.scrollWidth}`, 
-        pin: true,
-        scrub: true,
-        onUpdate: (self) => {
-          if (self.progress >= 1) {
-            setHorizontalScrollCompleted(true);
 
-            // Smooth scroll to the next section after horizontal scroll ends
-            ScrollTrigger.refresh();
-            gsap.to(window, {
-              scrollTo: { y: window.innerHeight },
-              duration: 1,
-              ease: 'power2.out',
-              onComplete: () => {
-                ScrollTrigger.refresh();
-              }
-            });
-          } else {
-            setHorizontalScrollCompleted(false);
-          }
+    // Function to create the horizontal scroll animation
+    const createHorizontalScroll = () => {
+      return gsap.to(container, {
+        x: -(container.scrollWidth - window.innerWidth),
+        ease: 'none',
+        scrollTrigger: {
+          trigger: container,
+          start: 'top top',
+          end: `+=${container.scrollWidth}`, 
+          pin: true,
+          scrub: true,
+          onUpdate: (self) => {
+            if (self.progress >= 1) {
+              setHorizontalScrollCompleted(true);
+              gsap.to(window, {
+                scrollTo: { y: window.innerHeight },
+                duration: 1,
+                ease: 'power2.out',
+                onComplete: () => ScrollTrigger.refresh(),
+              });
+            } else {
+              setHorizontalScrollCompleted(false);
+            }
+          },
         },
-      },
-    });
+      });
+    };
+
+    // Initialize the animation
+    let scrollTween = createHorizontalScroll();
+
+    // Refresh animation and ScrollTrigger on window resize
+    const resizeHandler = () => {
+      scrollTween.kill();  // Kill existing animation
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());  // Clear all triggers
+      scrollTween = createHorizontalScroll();  // Re-create animation
+      ScrollTrigger.refresh();  // Ensure ScrollTrigger updates
+    };
+
+    // Attach resize event listener
+    window.addEventListener('resize', resizeHandler);
+
+    // Run ScrollTrigger refresh after initial setup
+    ScrollTrigger.refresh();
 
     return () => {
+      // Cleanup on component unmount
       scrollTween.kill();
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+      window.removeEventListener('resize', resizeHandler);
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
     };
   }, [setHorizontalScrollCompleted]);
 
