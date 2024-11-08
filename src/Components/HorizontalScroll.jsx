@@ -15,22 +15,29 @@ const HorizontalScroll = ({ setHorizontalScrollCompleted }) => {
 
   useEffect(() => {
     const container = containerRef.current;
-    const itemWidth = container.scrollWidth / container.children.length;
-
-    // Adjust GSAP animation for smooth horizontal scrolling
-    gsap.to(container, {
-      x: -(container.scrollWidth - window.innerWidth), // Calculate the scroll distance based on container width
+    const scrollTween = gsap.to(container, {
+      x: -(container.scrollWidth - window.innerWidth),
       ease: 'none',
       scrollTrigger: {
         trigger: container,
         start: 'top top',
-        end: `+=${container.scrollWidth}`, // Scroll distance based on container width
+        end: `+=${container.scrollWidth}`, 
         pin: true,
         scrub: true,
         onUpdate: (self) => {
-          // Check if scroll is at the end or back at the start
           if (self.progress >= 1) {
             setHorizontalScrollCompleted(true);
+
+            // Smooth scroll to the next section after horizontal scroll ends
+            ScrollTrigger.refresh();
+            gsap.to(window, {
+              scrollTo: { y: window.innerHeight },
+              duration: 1,
+              ease: 'power2.out',
+              onComplete: () => {
+                ScrollTrigger.refresh();
+              }
+            });
           } else {
             setHorizontalScrollCompleted(false);
           }
@@ -39,14 +46,13 @@ const HorizontalScroll = ({ setHorizontalScrollCompleted }) => {
     });
 
     return () => {
-      // Clean up ScrollTrigger instances when component unmounts
+      scrollTween.kill();
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
   }, [setHorizontalScrollCompleted]);
 
   return (
     <div ref={containerRef} className="hcontent flex w-[500vw] overflow-hidden bg-black-100">
-      {/* Each card takes full screen width */}
       <div className="flex-shrink-0 w-screen h-screen bg-black-500 flex items-center justify-center">
         <CarwashCard />
       </div>
