@@ -40,31 +40,34 @@ const HorizontalScroll = ({ setHorizontalScrollCompleted }) => {
               setHorizontalScrollCompleted(false);
             }
           },
+          onEnter: () => ScrollTrigger.refresh(),
         },
       });
     };
 
-    // Initialize the animation
+    // Initialize the animation only once
     let scrollTween = createHorizontalScroll();
 
-    // Refresh animation and ScrollTrigger on window resize with a delay
+    // Resize event listener with cleanup
     const resizeHandler = () => {
+      // Delay reinitializing ScrollTrigger to avoid issues with resize
       setTimeout(() => {
+        // Re-create ScrollTrigger and GSAP animation
         scrollTween.kill();
         ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
         scrollTween = createHorizontalScroll();
         ScrollTrigger.refresh();
-      }, 100); // Delay allows for complete element resizing
+      }, 100);
     };
 
     // Attach resize event listener
     window.addEventListener('resize', resizeHandler);
 
-    // Initial refresh
+    // Initial refresh for ScrollTrigger
     ScrollTrigger.refresh();
 
     return () => {
-      // Cleanup on component unmount
+      // Cleanup on component unmount to avoid memory leaks
       scrollTween.kill();
       window.removeEventListener('resize', resizeHandler);
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
